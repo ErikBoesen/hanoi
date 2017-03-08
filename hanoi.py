@@ -2,6 +2,14 @@
 
 import curses
 import time
+import argparse
+
+
+parser = argparse.ArgumentParser(description='Solve a Tower of Hanoi problem.')
+parser.add_argument('disks', type=int, default=15, help='Number of disks. (Required)')
+parser.add_argument('--delay', type=float, dest='delay', default=0.1, help='Delay in between renders (s).')
+
+args = parser.parse_args()
 
 stdscr = curses.initscr()
 
@@ -9,9 +17,9 @@ stdscr = curses.initscr()
 curses.curs_set(0)
 
 # Number of disks
-DISKS = 15
+DISKS = args.disks
 # Delay in between renders
-DELAY = .1
+DELAY = args.delay
 CHAR = '▇'
 
 # Define starting stacks
